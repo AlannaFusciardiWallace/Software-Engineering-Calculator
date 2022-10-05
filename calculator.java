@@ -14,7 +14,7 @@ public class calculator  {
         error = false;
     }
 
-    private boolean isOperator(char ch) {
+    private boolean checkIsOperator(char ch) {
         return ch == '+' || ch == '-' || ch == '*';
     }
 
@@ -67,12 +67,12 @@ public class calculator  {
 
         // Process all input tokens
         for (int n = 0; n < tokens.length; n++) {
-            String nextToken = tokens[n];
-            char ch = nextToken.charAt(0);
+            String followingToken = tokens[n];
+            char ch = followingToken.charAt(0);
             if (ch >= '0' && ch <= '9') {
-                double value = Double.parseDouble(nextToken);
+                double value = Double.parseDouble(followingToken);
                 valueStack.push(value);
-            } else if (isOperator(ch)) {
+            } else if (checkIsOperator(ch)) {
                 if (operatorStack.empty() || getOrder(ch) > getOrder(operatorStack.peek())) {
                     operatorStack.push(ch);
                 } else {
@@ -86,7 +86,7 @@ public class calculator  {
             } else if (ch == '(') {
                 operatorStack.push(ch);
             } else if (ch == ')') {
-                while (!operatorStack.empty() && isOperator(operatorStack.peek())) {
+                while (!operatorStack.empty() && checkIsOperator(operatorStack.peek())) {
                     char toProcess = operatorStack.peek();
                     operatorStack.pop();
                     processOperator(toProcess);
@@ -101,7 +101,7 @@ public class calculator  {
 
         }
         // Empty out the operator stack at the end of the input
-        while (!operatorStack.empty() && isOperator(operatorStack.peek())) {
+        while (!operatorStack.empty() && checkIsOperator(operatorStack.peek())) {
             char toProcess = operatorStack.peek();
             operatorStack.pop();
             processOperator(toProcess);
