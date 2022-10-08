@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class calculator  {
 
-	private stack<Character> operatorStack;
+    private stack<Character> operatorStack;
     private stack<Double> valueStack;
     private boolean error;
 
@@ -65,7 +65,7 @@ public class calculator  {
         
         String[] tokens = input.split(" ");
 
-        // Process all input tokens
+        // Process input tokens
         for (int n = 0; n < tokens.length; n++) {
             String followingToken = tokens[n];
             char ch = followingToken.charAt(0);
@@ -100,13 +100,13 @@ public class calculator  {
             }
 
         }
-        // Empty out the operator stack at the end of the input
+        // Empty the operator stack at the end
         while (!operatorStack.empty() && checkIsOperator(operatorStack.peek())) {
             char toProcess = operatorStack.peek();
             operatorStack.pop();
             processOperator(toProcess);
         }
-        // Print the results
+        // Print results
         if (error == false) {
             double result = valueStack.peek();
             valueStack.pop();
@@ -121,7 +121,7 @@ public class calculator  {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        // The original input
+        // Input
         System.out.print("Input sum to calculate: ");
         String userInput = input.nextLine();
 
@@ -129,3 +129,4 @@ public class calculator  {
         calc.processInput(userInput);
     }
 }
+
