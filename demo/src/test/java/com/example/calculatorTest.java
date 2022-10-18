@@ -32,7 +32,9 @@ public class calculatorTest {
     public void shouldAnswerWithTrue() {
         c.processInput("103 + 3");
         c.processInput("10 * 2 + 1");
-        assertEquals("The result is 106.0\nThe result is 21.0\n",
+        c.processInput("12435 + 34569 - 12345 * 10 + 50"); // This highlights how Bomdas is taken into account when
+                                                           // calculating the sum
+        assertEquals("The result is 106.0\nThe result is 21.0\nThe result is -76396.0\n",
                 outContent.toString());
     }
 
