@@ -30,9 +30,9 @@ public class calculatorTest {
 
     @Test
     public void shouldAnswerWithTrue() {
-        c.processInput("103 + 2");
+        c.processInput("103 + 3");
         c.processInput("10 * 2 + 1");
-        assertEquals("The result is 105.0\nThe result is 21.0\n",
+        assertEquals("The result is 106.0\nThe result is 21.0\n",
                 outContent.toString());
     }
 
